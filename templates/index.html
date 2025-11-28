@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Real-Time News Sentiment Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1>📰 Real-Time News Sentiment Dashboard</h1>
+            <p>Type a topic (e.g., "AI", "stock market", "climate change") and see live news with sentiment analysis.</p>
+        </header>
+
+        <section class="controls">
+            <form id="search-form">
+                <input
+                    type="text"
+                    id="query-input"
+                    name="query"
+                    placeholder="Search topic..."
+                    value="{{ default_query }}"
+                    autocomplete="off"
+                />
+                <button type="submit">Search</button>
+            </form>
+            <div class="auto-refresh">
+                <label>
+                    <input type="checkbox" id="auto-refresh-toggle" checked />
+                    Auto refresh every 60 seconds
+                </label>
+            </div>
+        </section>
+
+        <main id="results"></main>
+
+        <footer class="footer">
+            <p>Built with Flask + Transformers (Hugging Face) + NewsAPI</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
